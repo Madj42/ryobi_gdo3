@@ -1,0 +1,9 @@
+
+{
+  "domain": "ryobigdo2",
+  "name": "ryobigdo2",
+  "documentation": "https://github.com/madj42/ryobi_gdo2",
+  "dependencies": [],
+  "codeowners": ["@guillaume1410","@madj42"],
+  "requirements": ["py_ryobi_gdo==0.0.27"]
+}
