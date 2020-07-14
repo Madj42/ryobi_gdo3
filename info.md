@@ -8,6 +8,10 @@ The overwhelming majority of the work was done by [guillaume1410](https://commun
 
 To get your door id, download and run the doorid.py file using Python.  Make sure to edit the username and password variables in the script beforehand.  You'll also need to install the requests module using pip.
 
+## Installation:
+
+Put this in your custom_components folder under ryobi_gdo3 and restart Home Assistant.
+
 ## Configuration.yaml example:
 ```
 cover:

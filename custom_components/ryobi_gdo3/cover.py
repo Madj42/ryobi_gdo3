@@ -14,8 +14,9 @@ from homeassistant.components.cover import (
 from homeassistant.const import (
     CONF_USERNAME, CONF_PASSWORD, STATE_UNKNOWN, STATE_CLOSED)
 
-REQUIREMENTS = ['py_ryobi_gdo==0.0.27']
+REQUIREMENTS = ['py-ryobi-gdo==0.0.27']
 
+DOMAIN = "ryobi_gdo3"
 _LOGGER = logging.getLogger(__name__)
 
 SCAN_INTERVAL = timedelta(seconds=120)
@@ -63,8 +64,17 @@ class RyobiCover(CoverEntity):
     def __init__(self, hass, ryobi_door):
         """Initialize the cover."""
         self.ryobi_door = ryobi_door
-        self._name = 'ryobi_gdo_{}'.format(ryobi_door.get_device_id())
+        self._name = 'ryobi_gdo_door_{}'.format(ryobi_door.get_device_id())
         self._door_state = None
+      
+    @property
+    def device_info(self):
+        """Return device registry information for this entity."""
+        return {
+            "identifiers": {(DOMAIN, self.device_id)},
+            "manufacturer": "Ryobi",
+            "name": self._name,
+        }
 
     @property
     def name(self):

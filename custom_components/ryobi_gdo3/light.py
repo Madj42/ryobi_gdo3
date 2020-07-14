@@ -15,9 +15,9 @@ from homeassistant.components.light import (
 from homeassistant.const import (
     CONF_USERNAME, CONF_PASSWORD, STATE_UNKNOWN, STATE_CLOSED)
 
-REQUIREMENTS = ['py_ryobi_gdo==0.0.27']
+REQUIREMENTS = ['py-ryobi-gdo==0.0.27']
 
-DOMAIN = "ryobigdo2"
+DOMAIN = "ryobi_gdo3"
 _LOGGER = logging.getLogger(__name__)
 
 SCAN_INTERVAL = timedelta(seconds=300)

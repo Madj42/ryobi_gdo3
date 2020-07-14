@@ -1,0 +1,9 @@
+
+{
+  "domain": "ryobi_gdo3",
+  "name": "ryobi_gdo3",
+  "documentation": "https://github.com/madj42/ryobi_gdo3",
+  "dependencies": [],
+  "codeowners": ["@guillaume1410","@madj42"],
+  "requirements": ["py-ryobi-gdo==0.0.27"]
+}
