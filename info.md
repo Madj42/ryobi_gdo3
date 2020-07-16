@@ -15,14 +15,14 @@ Put this in your custom_components folder under ryobi_gdo3 and restart Home Assi
 ## Configuration.yaml example:
 ```
 cover:
-  - platform: ryobi_gdo2
+  - platform: ryobi_gdo3
     username: !secret ryobi_username
     password: !secret ryobi_password
     device_id:
       - !secret ryobi_device_id
       
 light:
-  - platform: ryobi_gdo2
+  - platform: ryobi_gdo3
     username: !secret ryobi_username
     password: !secret ryobi_password
     device_id:
