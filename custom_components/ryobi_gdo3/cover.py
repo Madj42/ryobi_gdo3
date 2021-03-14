@@ -4,6 +4,7 @@ For more details about this platform, please refer to the documentation
 https://home-assistant.io/components/cover.ryobi_gdo/
 """
 import logging
+import time
 import voluptuous as vol
 from datetime import timedelta
 
@@ -14,12 +15,12 @@ from homeassistant.components.cover import (
 from homeassistant.const import (
     CONF_USERNAME, CONF_PASSWORD, STATE_UNKNOWN, STATE_CLOSED)
 
-REQUIREMENTS = ['py-ryobi-gdo==0.0.27']
+"""REQUIREMENTS = ['py-ryobi-gdo==0.0.27']"""
 
 DOMAIN = "ryobi_gdo3"
 _LOGGER = logging.getLogger(__name__)
 
-SCAN_INTERVAL = timedelta(seconds=120)
+SCAN_INTERVAL = timedelta(seconds=60)
 
 CONF_DEVICE_ID = 'device_id'
 
@@ -34,7 +35,7 @@ SUPPORTED_FEATURES = (SUPPORT_OPEN | SUPPORT_CLOSE)
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the Ryobi covers."""
-    from py_ryobi_gdo import RyobiGDO as ryobi_door
+    from .py_ryobi_gdo import RyobiGDO as ryobi_door
     covers = []
 
     username = config.get(CONF_USERNAME)
@@ -102,12 +103,24 @@ class RyobiCover(CoverEntity):
         """Close the cover."""
         _LOGGER.debug("Closing garage door")
         self.ryobi_door.close_device()
+        time.sleep(5)
+        self.ryobi_door.update()
+        time.sleep(20)
+        self.ryobi_door.update()
+        time.sleep(5)
+        self.ryobi_door.update()
 
     def open_cover(self, **kwargs):
         """Open the cover."""
         _LOGGER.debug("Opening garage door")
         self.ryobi_door.open_device()
-
+        time.sleep(5)
+        self.ryobi_door.update()
+        time.sleep(5)
+        self.ryobi_door.update()
+        time.sleep(5)
+        self.ryobi_door.update()
+        
     def update(self):
         """Update status from the door."""
         _LOGGER.debug("Updating RyobiGDO status")

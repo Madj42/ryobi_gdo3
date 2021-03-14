@@ -15,12 +15,12 @@ from homeassistant.components.light import (
 from homeassistant.const import (
     CONF_USERNAME, CONF_PASSWORD, STATE_UNKNOWN, STATE_CLOSED)
 
-REQUIREMENTS = ['py-ryobi-gdo==0.0.27']
+"""REQUIREMENTS = ['py-ryobi-gdo==0.0.27']"""
 
 DOMAIN = "ryobi_gdo3"
 _LOGGER = logging.getLogger(__name__)
 
-SCAN_INTERVAL = timedelta(seconds=300)
+SCAN_INTERVAL = timedelta(seconds=60)
 
 CONF_DEVICE_ID = 'device_id'
 
@@ -32,7 +32,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the Ryobi lights."""
-    from py_ryobi_gdo import RyobiGDO as ryobi_door
+    from .py_ryobi_gdo import RyobiGDO as ryobi_door
     lights = []
 
     username = config.get(CONF_USERNAME)
