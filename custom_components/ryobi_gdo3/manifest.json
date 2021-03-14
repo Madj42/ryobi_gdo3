@@ -4,5 +4,5 @@
   "version": "1.0",
   "documentation": "https://github.com/madj42/ryobi_gdo3",
   "dependencies": [],
-  "codeowners": ["@guillaume1410","@madj42"],
+  "codeowners": ["@guillaume1410","@madj42"]
 }
