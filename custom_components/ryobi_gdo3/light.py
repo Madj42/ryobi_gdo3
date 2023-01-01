@@ -62,9 +62,9 @@ class RyobiLight(LightEntity):
     def __init__(self, hass, ryobi_door):
         """Initialize the light."""
         self.ryobi_door = ryobi_door
-        self.device_id = ryobi_door.get_device_id()
         self._name = 'ryobi_gdo_light_{}'.format(ryobi_door.get_device_id())
         self._light_state = None
+        self.device_id = ryobi_door.get_device_id()
         self._attr_unique_id = 'ryobi_gdo_light_{}'.format(ryobi_door.get_device_id())
       
     @property
