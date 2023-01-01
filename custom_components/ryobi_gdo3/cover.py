@@ -9,7 +9,7 @@ import voluptuous as vol
 from datetime import timedelta
 
 import homeassistant.helpers.config_validation as cv
-
+from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.components.cover import (
     CoverEntity, PLATFORM_SCHEMA, SUPPORT_OPEN, SUPPORT_CLOSE)
 from homeassistant.const import (
@@ -67,15 +67,18 @@ class RyobiCover(CoverEntity):
         self.ryobi_door = ryobi_door
         self._name = 'ryobi_gdo_door_{}'.format(ryobi_door.get_device_id())
         self._door_state = None
+        self.device_id = ryobi_door.get_device_id()
+        self._attr_unique_id = 'ryobi_gdo_door_{}'.format(ryobi_door.get_device_id())
       
     @property
-    def device_info(self):
+    def device_info(self) -> DeviceInfo:
         """Return device registry information for this entity."""
-        return {
-            "identifiers": {(DOMAIN, self.device_id)},
-            "manufacturer": "Ryobi",
-            "name": self._name,
-        }
+        return DeviceInfo(
+            identifiers = {(DOMAIN, self.device_id)},
+            manufacturer = "Ryobi",
+            model = "GDO",
+            name = "Ryobi Garage Door Opener",
+        )
 
     @property
     def name(self):
